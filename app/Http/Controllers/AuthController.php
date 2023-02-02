@@ -46,12 +46,13 @@ class AuthController extends Controller
         ]);
     }
 
-    // public function logout()
-    // {
-    //     Auth::user()->currentAccessToken()->delete();
+    public function logout()
+    {
+        Auth::user()->currentAccessToken()->delete();
+        // $request->user()->currentAccessToken()->delete();
 
-    //     return $this->success([
-    //         'message' => 'You have succesfully been logged out and your token has been removed'
-    //     ]);
-    // }
+        return $this->success([
+            'message' => 'You have succesfully been logged out and your token has been removed'
+        ]);
+    }
 }
