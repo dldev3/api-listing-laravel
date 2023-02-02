@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Broker extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'name', 'address', 'city', 'zip_code', 'phone_number', 'logo_path'
+    ];
 }
