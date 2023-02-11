@@ -13,7 +13,7 @@ class StoreBrokerRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,17 @@ class StoreBrokerRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            "name" => [$this->isPostRequest(), "unique:brokers", "max:255"],
+            "address" => [$this->isPostRequest(), "max:255"],
+            "city" => [$this->isPostRequest(), "max:255"],
+            "zip_code" => [$this->isPostRequest(), "max:255"],
+            "phone_number" => [$this->isPostRequest(), "numeric", "digits:10"],
+            "logo_path" => [$this->isPostRequest()]
         ];
+    }
+
+    private function isPostRequest()
+    {
+        return request()->isMethod('post') ? 'required' : 'sometimes';
     }
 }
