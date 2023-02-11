@@ -13,7 +13,7 @@ class BrokersController extends Controller
      */
     public function index()
     {
-        
+        return \App\Models\Broker::all();
     }
 
 
