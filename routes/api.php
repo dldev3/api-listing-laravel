@@ -19,16 +19,19 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-
+//48.04
 
 //public routes
 
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/register', [AuthController::class, 'register']);
-Route::apiResource('/brokers', BrokersController::class);
+Route::get('/brokers', [BrokersController::class, 'index']);
+Route::get('/brokers/{broker}', [BrokersController::class, 'show']);
+
 
 
 //protected routes
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/logout', [AuthController::class, 'logout']);
+    Route::apiResource('/brokers', BrokersController::class)->only(['store', 'update', 'destroy']);
 });
