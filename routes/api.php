@@ -27,6 +27,8 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::post('/register', [AuthController::class, 'register']);
 Route::get('/brokers', [BrokersController::class, 'index']);
 Route::get('/brokers/{broker}', [BrokersController::class, 'show']);
+Route::get('/brokers/{broker}', [BrokersController::class, 'show']);
+Route::get('/brokers/{broker}', [BrokersController::class, 'show']);
 
 
 
